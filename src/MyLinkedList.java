@@ -56,6 +56,7 @@ public class MyLinkedList<T> implements Iterable<T>{
     public void addLast(T element){
         if(head == null){
             head = new Node<T>(element);
+            tail = new Node<T>(element);
         }else{
             Node<T> newTail = new Node<T>(element);
             tail.setNextNode(newTail);
