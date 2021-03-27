@@ -1,3 +1,6 @@
+![](https://img.shields.io/badge/learn-data%20structures-brightgreen)
+![](https://img.shields.io/badge/learn-algorithms-brightgreen)
+
 # Custom Linked List
 
 ## Description
