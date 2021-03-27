@@ -61,6 +61,7 @@ public class MyLinkedList<T> implements Iterable<T>{
         }else{
             Node<T> newTail = new Node<T>(element);
             tail.setNextNode(newTail);
+            newTail.setPrevNode(tail);
             tail = newTail;
         }
     }
