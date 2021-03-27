@@ -45,6 +45,7 @@ public class MyLinkedList<T> implements Iterable<T>{
     public void addFirst(T element){
         if(head == null){
             head = new Node<T>(element);
+            tail = new Node<T>(element);
         }else{
             Node<T> newHead = new Node<T>(element);
             newHead.setNextNode(head);
