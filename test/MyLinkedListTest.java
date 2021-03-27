@@ -50,8 +50,8 @@ public class MyLinkedListTest {
 
     @Test
     public void remove(){
-        persons.remove("nico");
-        assertFalse(persons.contains("nico"));
+        persons.remove("stefan");
+        assertFalse(persons.contains("stefan"));
     }
 
     @Test

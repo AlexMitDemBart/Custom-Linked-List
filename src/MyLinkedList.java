@@ -29,17 +29,7 @@ public class MyLinkedList<T> implements Iterable<T>{
     }
 
     public void add(T element){
-        if(head == null) {
-            head = new Node<T>(element);
-            tail = new Node<T>(element);
-        }
-        else{
-            Node<T> lastNode = getLastNode();
-            Node<T> newNode = new Node<T>(element);
-            newNode.setPrevNode(lastNode);
-            lastNode.setNextNode(newNode);
-            tail = newNode;
-        }
+        addLast(element);
     }
 
     public void addFirst(T element){
@@ -56,8 +46,9 @@ public class MyLinkedList<T> implements Iterable<T>{
 
     public void addLast(T element){
         if(head == null){
-            head = new Node<T>(element);
-            tail = new Node<T>(element);
+            Node<T> newNode = new Node<T>(element);
+            head = newNode;
+            tail = newNode;
         }else{
             Node<T> newTail = new Node<T>(element);
             tail.setNextNode(newTail);
@@ -83,16 +74,26 @@ public class MyLinkedList<T> implements Iterable<T>{
 
     public void remove(T element){
         if(head != null){
-            Node<T> node = head.getNextNode();
-            while(node.getNextNode() != null){
-                if(node.getData().equals(element)){
-                    Node<T> prevNode = node.getPrevNode();
-                    Node<T> nextNode = node.getNextNode();
-                    prevNode.setNextNode(nextNode);
-                    nextNode.setPrevNode(prevNode);
-                    return;
-                }else{
+            if(!element.equals(head.getData()) && !element.equals(tail.getData())){
+                Node<T> node = head.getNextNode();
+                while(node.getNextNode() != null){
+                    if(node.getData().equals(element)){
+                        Node<T> nextNode = node.getNextNode();
+                        Node<T> prevNode = node.getPrevNode();
+                        prevNode.setNextNode(nextNode);
+                        nextNode.setPrevNode(prevNode);
+                    }
                     node = node.getNextNode();
+                }
+            }else{
+                if(element.equals(head.getData())){
+                    Node<T> nextNode = head.getNextNode();
+                    nextNode.setPrevNode(null);
+                    head = nextNode;
+                }else{
+                    Node<T> prevNode = tail.getPrevNode();
+                    prevNode.setPrevNode(null);
+                    tail = prevNode;
                 }
             }
         }else{
@@ -134,16 +135,9 @@ public class MyLinkedList<T> implements Iterable<T>{
 
         @Override
         public T next() {
-            if (!cursorIsOnHead) {
-                T data = current.getData();
-                current = current.getNextNode();
-                return data;
-            }else{
-                T data = current.getData();
-                current = current.getNextNode();
-                cursorIsOnHead = false;
-                return data;
-            }
+            T data = current.getData();
+            current = current.getNextNode();
+            return data;
         }
     }
 }
