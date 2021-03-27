@@ -101,12 +101,10 @@ public class MyLinkedList<T> implements Iterable<T>{
     }
 
     public boolean contains(T element){
-        if(head == null){
-            return false;
-        }else{
+        if(head != null) {
             Node<T> node = head.getNextNode();
-            while(node.getNextNode() != null){
-                if(node.getData().equals(element)){
+            while (node.getNextNode() != null) {
+                if (node.getData().equals(element)) {
                     return true;
                 }
                 node = node.getNextNode();
