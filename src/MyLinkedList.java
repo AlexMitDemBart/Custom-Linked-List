@@ -82,9 +82,7 @@ public class MyLinkedList<T> implements Iterable<T>{
     }
 
     public void remove(T element){
-        if(head == null){
-            throw new NoSuchElementException("Element does not exist");
-        }else{
+        if(head != null){
             Node<T> node = head.getNextNode();
             while(node.getNextNode() != null){
                 if(node.getData().equals(element)){
@@ -97,6 +95,8 @@ public class MyLinkedList<T> implements Iterable<T>{
                     node = node.getNextNode();
                 }
             }
+        }else{
+            throw new NoSuchElementException("Element does not exist");
         }
     }
 
