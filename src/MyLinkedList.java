@@ -57,10 +57,10 @@ public class MyLinkedList<T> implements Iterable<T>{
         if(head == null){
             head = new Node<T>(element);
         }else{
-            Node<T> newHead = new Node<T>(element);
-            newHead.setNextNode(head);
-            head.setPrevNode(newHead);
-            head = newHead;
+            Node<T> newTail = new Node<T>(element);
+            newTail.setNextNode(head);
+            head.setPrevNode(newTail);
+            tail = newTail;
         }
     }
 
